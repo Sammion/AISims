@@ -94,7 +94,10 @@ export const useGameStore = defineStore('game', {
       let endingType = 'ordinary'
       let referencePerson = null
 
-      if (wealth > 1000000000 && reputation > 80 && social > 80) {
+      // 优先判断早逝结局
+      if (this.stats.health <= 0) {
+        endingType = 'premature_death'
+      } else if (wealth > 1000000000 && reputation > 80 && social > 80) {
         endingType = 'tycoon'
         referencePerson = {
           name: '王健林',
@@ -127,8 +130,6 @@ export const useGameStore = defineStore('game', {
           name: '资深地产从业者',
           description: '拥有丰富行业经验的资深员工'
         }
-      } else if (this.stats.health <= 0) {
-        endingType = 'premature_death'
       }
 
       this.ending = {

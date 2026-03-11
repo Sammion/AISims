@@ -257,11 +257,14 @@ const loadSaveList = () => {
 }
 
 const loadGame = (save) => {
-  gameStore.initCharacter(save.character)
+  // 直接加载所有状态，避免initCharacter重置财富
+  gameStore.character = save.character
   gameStore.currentAge = save.age
   gameStore.currentPhase = save.phase
   gameStore.stats = { ...save.stats }
   gameStore.history = [...save.history]
+  gameStore.gameOver = false
+  gameStore.ending = null
   
   showLoadDialog.value = false
   generateEvent()
