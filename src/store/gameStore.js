@@ -60,9 +60,14 @@ export const useGameStore = defineStore('game', {
       this.currentAge++
       this.updatePhase()
       
-      // 随机健康波动
-      if (Math.random() < 0.1) {
-        this.stats.health = Math.max(0, this.stats.health - Math.floor(Math.random() * 5))
+      // 健康值动态调整：平衡健康下降和自然恢复
+      const healthRoll = Math.random()
+      if (healthRoll < 0.05) {
+        // 5%概率出现健康问题，减少3-8点健康
+        this.stats.health = Math.max(0, this.stats.health - Math.floor(Math.random() * 6 + 3))
+      } else if (healthRoll > 0.7) {
+        // 30%概率自然恢复，增加2-4点健康（上限100）
+        this.stats.health = Math.min(100, this.stats.health + Math.floor(Math.random() * 3 + 2))
       }
 
       // 检查游戏结束条件
