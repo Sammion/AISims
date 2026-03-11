@@ -187,12 +187,17 @@ const makeChoice = (choice) => {
   const changes = {}
   Object.keys(consequences).forEach(key => {
     if (key === 'description') return
-    if (key === 'wealth') {
-      gameStore.addWealth(consequences[key])
-    } else if (stats.value[key] !== undefined) {
-      gameStore.updateStats({ [key]: consequences[key] })
+    let value = consequences[key]
+    // 如果是函数则执行获取动态值
+    if (typeof value === 'function') {
+      value = value()
     }
-    changes[key] = consequences[key]
+    if (key === 'wealth') {
+      gameStore.addWealth(value)
+    } else if (stats.value[key] !== undefined) {
+      gameStore.updateStats({ [key]: value })
+    }
+    changes[key] = value
   })
 
   // 记录历史

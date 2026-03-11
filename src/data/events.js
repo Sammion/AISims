@@ -336,36 +336,93 @@ export const randomEvents = [
     id: 'rand_001',
     title: '楼市暴涨',
     description: '房地产市场迎来暴涨，你的资产大幅增值！',
-    consequences: {
-      wealth: +(Math.random() * 500000 + 100000),
-      reputation: +5
-    }
+    choices: [
+      {
+        text: '抓住机会加大投资',
+        consequences: {
+          wealth: () => Math.random() * 500000 + 100000,
+          reputation: +5,
+          description: '你看准时机追加投资，资产大幅增值！'
+        }
+      },
+      {
+        text: '见好就收，落袋为安',
+        consequences: {
+          wealth: () => Math.random() * 200000 + 50000,
+          health: +3,
+          description: '你选择稳健操作，锁定了部分收益，避免了后续风险。'
+        }
+      }
+    ]
   },
   {
     id: 'rand_002',
     title: '政策调控',
     description: '国家出台房地产调控政策，市场降温。',
-    consequences: {
-      wealth: -(Math.random() * 200000 + 50000),
-      knowledge: +5
-    }
+    choices: [
+      {
+        text: '降价抛售，快速回笼资金',
+        consequences: {
+          wealth: () => -(Math.random() * 200000 + 50000),
+          knowledge: +5,
+          description: '你果断止损，虽然损失了部分资金，但保住了现金流。'
+        }
+      },
+      {
+        text: '长期持有，等待市场回暖',
+        consequences: {
+          wealth: () => -(Math.random() * 100000 + 20000),
+          reputation: +3,
+          description: '你看好行业长期发展，选择持有，虽然短期亏损但获得了业内认可。'
+        }
+      }
+    ]
   },
   {
     id: 'rand_003',
     title: '项目成功',
     description: '你负责的项目大获成功，得到了公司奖励！',
-    consequences: {
-      wealth: +(Math.random() * 100000 + 20000),
-      reputation: +10
-    }
+    choices: [
+      {
+        text: '接受奖金，继续努力',
+        consequences: {
+          wealth: () => Math.random() * 100000 + 20000,
+          reputation: +10,
+          description: '你获得了丰厚的奖金，在公司的地位也更加稳固。'
+        }
+      },
+      {
+        text: '把奖金分给团队成员',
+        consequences: {
+          social: +15,
+          reputation: +15,
+          description: '你大方地分享了奖金，团队凝聚力大大增强，大家都愿意跟随你干。'
+        }
+      }
+    ]
   },
   {
     id: 'rand_004',
     title: '健康问题',
     description: '长期高强度工作让你的身体出现了问题，需要休养。',
-    consequences: {
-      health: -20,
-      wealth: -10000
-    }
+    choices: [
+      {
+        text: '立刻住院治疗，健康最重要',
+        consequences: {
+          health: +15,
+          wealth: -10000,
+          description: '你放下工作专心休养，身体很快恢复了健康。'
+        }
+      },
+      {
+        text: '带病坚持工作，项目不能停',
+        consequences: {
+          health: -20,
+          reputation: +8,
+          wealth: +50000,
+          description: '你坚持完成了项目，得到了领导的赏识，但身体状况更差了。'
+        }
+      }
+    ]
   }
 ]
