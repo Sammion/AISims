@@ -121,6 +121,100 @@ export const events = {
       ]
     },
     {
+      id: 'uni_004',
+      title: '课程设计比赛',
+      description: '学校举办房产项目设计大赛，奖金丰厚：',
+      choices: [
+        {
+          text: '组队参赛，冲击一等奖',
+          consequences: {
+            knowledge: +12,
+            reputation: +8,
+            wealth: +3000,
+            description: '你们团队的设计作品获得了一等奖，得到了评委的高度认可'
+          }
+        },
+        {
+          text: '参加但不追求名次',
+          consequences: {
+            knowledge: +5,
+            social: +3,
+            description: '你参与了比赛，学到了很多实践知识，认识了不少同学'
+          }
+        },
+        {
+          text: '不参加，专心学习',
+          consequences: {
+            knowledge: +6,
+            description: '你利用这段时间巩固了专业知识，成绩有所提升'
+          }
+        }
+      ]
+    },
+    {
+      id: 'uni_005',
+      title: '兼职机会',
+      description: '课余时间你想找份兼职补贴生活费：',
+      choices: [
+        {
+          text: '做房产销售兼职',
+          consequences: {
+            social: +8,
+            wealth: +2000,
+            knowledge: +4,
+            description: '你利用周末时间做房产销售兼职，提前了解了行业情况'
+          }
+        },
+        {
+          text: '做家教',
+          consequences: {
+            wealth: +1500,
+            knowledge: +3,
+            description: '你利用课余时间做家教，收入稳定，还锻炼了表达能力'
+          }
+        },
+        {
+          text: '不兼职，专注学业',
+          consequences: {
+            knowledge: +5,
+            health: +2,
+            description: '你专心学习，成绩优秀，还获得了奖学金'
+          }
+        }
+      ]
+    },
+    {
+      id: 'uni_006',
+      title: '社团活动',
+      description: '你想参加一个社团丰富大学生活：',
+      choices: [
+        {
+          text: '加入房地产研究协会',
+          consequences: {
+            knowledge: +7,
+            social: +5,
+            description: '你在协会里认识了很多志同道合的朋友，经常一起讨论行业动态'
+          }
+        },
+        {
+          text: '加入创业协会',
+          consequences: {
+            social: +10,
+            reputation: +3,
+            description: '你参与了多个创业项目，锻炼了商业思维和实践能力'
+          }
+        },
+        {
+          text: '加入运动社团',
+          consequences: {
+            health: +8,
+            social: +6,
+            description: '你经常参加体育锻炼，身体变得更加强壮，还认识了很多朋友'
+          }
+        }
+      ]
+    },
+    {
       id: 'uni_002',
       title: '实习机会',
       description: '大三暑假，你获得了两个实习机会：',
@@ -147,6 +241,66 @@ export const events = {
           consequences: {
             knowledge: +20,
             description: '你决定继续深造，提升自己的学历和专业能力'
+          }
+        }
+      ]
+    },
+    {
+      id: 'uni_007',
+      title: '学术讲座',
+      description: '学校邀请了地产行业大佬来做学术讲座：',
+      choices: [
+        {
+          text: '提前到场，认真听讲并提问',
+          consequences: {
+            knowledge: +8,
+            reputation: +4,
+            description: '你的问题得到了大佬的赏识，给你留下了联系方式'
+          }
+        },
+        {
+          text: '正常参加，认真学习',
+          consequences: {
+            knowledge: +5,
+            description: '你学到了很多行业前沿知识，受益匪浅'
+          }
+        },
+        {
+          text: '不去了，在宿舍休息',
+          consequences: {
+            health: +3,
+            description: '你好好休息了一下，精神状态好了很多'
+          }
+        }
+      ]
+    },
+    {
+      id: 'uni_008',
+      title: '考证机会',
+      description: '你可以考取相关职业资格证书提升竞争力：',
+      choices: [
+        {
+          text: '备考房地产经纪人资格证',
+          consequences: {
+            knowledge: +10,
+            reputation: +5,
+            description: '你成功考取了资格证，未来找工作更有竞争力'
+          }
+        },
+        {
+          text: '备考注册建造师证',
+          consequences: {
+            knowledge: +12,
+            reputation: +6,
+            description: '你通过了考试，获得了含金量很高的职业资格证书'
+          }
+        },
+        {
+          text: '不考证，积累实践经验',
+          consequences: {
+            social: +5,
+            wealth: +1000,
+            description: '你利用时间做兼职和项目，积累了不少实践经验'
           }
         }
       ]
