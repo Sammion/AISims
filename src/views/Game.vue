@@ -112,6 +112,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/store/gameStore'
 import { events, randomEvents } from '@/data/events'
+import { ElMessage } from 'element-plus'
 
 const router = useRouter()
 const gameStore = useGameStore()
