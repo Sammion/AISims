@@ -25,6 +25,7 @@ export const useGameStore = defineStore('game', {
     initCharacter(characterData) {
       this.character = characterData
       this.stats.wealth = characterData.familySavings
+      this.stats.appearance = characterData.appearance
       this.currentAge = 15
       this.currentPhase = 'middle_school'
       this.history = []

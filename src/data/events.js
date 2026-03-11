@@ -96,6 +96,31 @@ export const events = {
       ]
     },
     {
+      id: 'uni_003',
+      title: '大学联谊活动',
+      description: '学校举办大型联谊活动，你会：',
+      choices: [
+        {
+          text: '积极参与，认识新朋友',
+          consequences: (appearance) => {
+            const baseSocial = 10
+            const bonus = appearance >= 7 ? 8 : appearance >= 5 ? 5 : 2
+            return {
+              social: baseSocial + bonus,
+              description: `你在联谊会上认识了很多朋友，颜值帮你获得了${bonus}点额外社交加成`
+            }
+          }
+        },
+        {
+          text: '待在宿舍学习',
+          consequences: {
+            knowledge: +8,
+            description: '你利用时间好好学习，专业知识更加扎实'
+          }
+        }
+      ]
+    },
+    {
       id: 'uni_002',
       title: '实习机会',
       description: '大三暑假，你获得了两个实习机会：',

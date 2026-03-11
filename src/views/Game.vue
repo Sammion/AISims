@@ -189,8 +189,19 @@ const generateEvent = () => {
 }
 
 const makeChoice = (choice) => {
-  const consequences = choice.consequences || currentEvent.value.consequences
+  let consequences = choice.consequences || currentEvent.value.consequences
   
+  // 如果是函数则执行，传入角色属性
+  if (typeof consequences === 'function') {
+    consequences = consequences({
+      appearance: character.value.appearance,
+      gender: character.value.gender,
+      fatherTrait: character.value.fatherTrait,
+      motherTrait: character.value.motherTrait,
+      ...stats.value
+    })
+  }
+
   // 应用后果
   const changes = {}
   Object.keys(consequences).forEach(key => {
