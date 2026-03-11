@@ -5,6 +5,7 @@
         <h2>{{ character.name }} 的人生</h2>
         <div class="age-info">
           <span class="age">{{ currentAge }} 岁</span>
+          <span class="year">({{ 2000 + currentAge - 15 }}年)</span>
           <span class="phase">{{ phaseName }}</span>
         </div>
       </div>
@@ -481,7 +482,8 @@ const loadGame = (save) => {
 
 .age-info {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 15px;
   font-size: 16px;
   color: #666;
 }
@@ -489,6 +491,14 @@ const loadGame = (save) => {
 .age {
   font-weight: bold;
   color: #409eff;
+}
+
+.year {
+  color: #67c23a;
+  font-weight: 500;
+  background: rgba(103, 194, 58, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .stats-bar {
