@@ -5,6 +5,7 @@
         <h2>{{ character.name }} 的人生</h2>
         <div class="age-info">
           <span class="age">{{ currentAge }} 岁</span>
+          <span class="year">({{ 2000 + currentAge - 15 }}年)</span>
           <span class="phase">{{ phaseName }}</span>
         </div>
       </div>
@@ -85,6 +86,19 @@
       <el-button type="primary" @click="nextEvent">继续</el-button>
     </div>
 
+    <!-- 人生阶段切换庆祝画面 -->
+    <div class="phase-celebration" v-if="showPhaseCelebration">
+      <div class="celebration-content">
+        <div class="celebration-title">🎉 恭喜进入新的人生阶段！</div>
+        <div class="phase-name">{{ phaseCelebrationData.name }}</div>
+        <div class="phase-description">{{ phaseCelebrationData.description }}</div>
+        <div class="phase-tips">{{ phaseCelebrationData.tips }}</div>
+        <el-button type="primary" size="large" @click="closePhaseCelebration">
+          开启新篇章
+        </el-button>
+      </div>
+    </div>
+
     <el-dialog title="保存游戏" v-model="showSaveDialog" width="400px">
       <el-form :model="saveData">
         <el-form-item label="存档名称">
@@ -138,6 +152,9 @@ const showSaveDialog = ref(false)
 const showLoadDialog = ref(false)
 const saveData = ref({ name: '' })
 const saveList = ref([])
+const showPhaseCelebration = ref(false)
+const phaseCelebrationData = ref({})
+const previousPhase = ref(null)
 
 const statNames = {
   knowledge: '知识',
@@ -145,6 +162,44 @@ const statNames = {
   health: '健康',
   reputation: '声望',
   wealth: '财富'
+}
+
+const phaseConfig = {
+  middle_school: {
+    name: '中学时期',
+    description: '青涩的少年时光，充满了无限可能',
+    tips: '努力学习，为未来打下坚实基础'
+  },
+  university: {
+    name: '大学时期',
+    description: '人生最美好的青春年华，自由而充满活力',
+    tips: '兼顾学习和社交，积累人脉和经验'
+  },
+  early_career: {
+    name: '职场初期',
+    description: '正式步入社会，开启职业生涯',
+    tips: '脚踏实地，虚心学习，快速成长'
+  },
+  career_growth: {
+    name: '职业上升期',
+    description: '事业稳步上升，能力和地位不断提升',
+    tips: '抓住机遇，勇于挑战，实现自我价值'
+  },
+  peak_career: {
+    name: '事业巅峰期',
+    description: '达到人生事业的顶峰，影响力不断扩大',
+    tips: '把握行业趋势，做出正确的战略选择'
+  },
+  late_career: {
+    name: '职业生涯后期',
+    description: '经验丰富，德高望重',
+    tips: '培养接班人，规划退休生活'
+  },
+  retirement: {
+    name: '退休生活',
+    description: '辛苦了一辈子，终于可以安享晚年',
+    tips: '享受生活，做自己想做的事情'
+  }
 }
 
 const phaseName = computed(() => {
@@ -165,6 +220,7 @@ onMounted(() => {
     router.push('/')
     return
   }
+  previousPhase.value = currentPhase.value
   generateEvent()
   loadSaveList()
 })
@@ -232,11 +288,23 @@ const makeChoice = (choice) => {
 const nextEvent = () => {
   showConsequence.value = false
   statChanges.value = null
+  const oldPhase = currentPhase.value
   gameStore.nextYear()
+  const newPhase = currentPhase.value
   
-  if (!gameStore.gameOver) {
+  // 检测阶段切换
+  if (!gameStore.gameOver && oldPhase !== newPhase) {
+    phaseCelebrationData.value = phaseConfig[newPhase]
+    showPhaseCelebration.value = true
+  } else if (!gameStore.gameOver) {
     generateEvent()
   }
+}
+
+const closePhaseCelebration = () => {
+  showPhaseCelebration.value = false
+  previousPhase.value = currentPhase.value
+  generateEvent()
 }
 
 const formatWealth = (amount) => {
@@ -317,6 +385,82 @@ const loadGame = (save) => {
   padding: 20px;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+}
+
+/* 人生阶段庆祝画面 */
+.phase-celebration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.celebration-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 80px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.8s ease-out;
+}
+
+.celebration-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.phase-name {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.phase-description {
+  font-size: 20px;
+  margin-bottom: 15px;
+  opacity: 0.95;
+}
+
+.phase-tips {
+  font-size: 18px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 }
 
 .game-header {
@@ -338,7 +482,8 @@ const loadGame = (save) => {
 
 .age-info {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 15px;
   font-size: 16px;
   color: #666;
 }
@@ -346,6 +491,14 @@ const loadGame = (save) => {
 .age {
   font-weight: bold;
   color: #409eff;
+}
+
+.year {
+  color: #67c23a;
+  font-weight: 500;
+  background: rgba(103, 194, 58, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .stats-bar {
