@@ -9,6 +9,9 @@
         </div>
       </div>
       <div class="header-right">
+        <el-button type="danger" size="small" @click="confirmExit">
+          返回主菜单
+        </el-button>
         <el-button type="warning" size="small" @click="showSaveDialog = true">
           存档
         </el-button>
@@ -117,7 +120,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/store/gameStore'
 import { events, randomEvents } from '@/data/events'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const router = useRouter()
 const gameStore = useGameStore()
@@ -226,12 +229,31 @@ const nextEvent = () => {
 }
 
 const formatWealth = (amount) => {
-  if (amount >= 100000000) {
-    return (amount / 100000000).toFixed(1) + '亿'
-  } else if (amount >= 10000) {
-    return (amount / 10000).toFixed(1) + '万'
+  const absAmount = Math.abs(amount)
+  const sign = amount >= 0 ? '' : '-'
+  if (absAmount >= 100000000) {
+    return sign + (absAmount / 100000000).toFixed(1) + '亿'
+  } else if (absAmount >= 10000) {
+    return sign + (absAmount / 10000).toFixed(1) + '万'
   }
-  return amount.toLocaleString()
+  return sign + absAmount.toLocaleString()
+}
+
+const confirmExit = () => {
+  ElMessageBox.confirm(
+    '确定要返回主菜单吗？当前未保存的进度将会丢失。',
+    '提示',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }
+  ).then(() => {
+    gameStore.reset()
+    router.push('/')
+  }).catch(() => {
+    // 取消操作
+  })
 }
 
 const saveGame = () => {
