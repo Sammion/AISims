@@ -1,0 +1,371 @@
+export const events = {
+  middle_school: [
+    {
+      id: 'ms_001',
+      title: '初中毕业选择',
+      description: '你刚完成九年义务教育，面临人生第一个重要选择：',
+      choices: [
+        {
+          text: '考上重点高中，努力学习',
+          consequences: {
+            knowledge: +10,
+            social: -5,
+            description: '你埋头苦读，成绩优异，但社交时间减少了'
+          }
+        },
+        {
+          text: '上普通高中，兼顾学习和社交',
+          consequences: {
+            knowledge: +5,
+            social: +5,
+            description: '你平衡了学习和生活，认识了很多朋友'
+          }
+        },
+        {
+          text: '辍学打工，早点进入社会',
+          consequences: {
+            knowledge: -10,
+            social: +10,
+            wealth: +5000,
+            description: '你早早进入社会，开始打拼，积累了社会经验'
+          }
+        }
+      ]
+    },
+    {
+      id: 'ms_002',
+      title: '暑假工机会',
+      description: '暑假期间，亲戚介绍你去房产中介门店帮忙发传单：',
+      choices: [
+        {
+          text: '去打工，锻炼自己',
+          consequences: {
+            social: +8,
+            wealth: +2000,
+            knowledge: +3,
+            description: '你第一次接触房地产行业，了解了基础的房产知识'
+          }
+        },
+        {
+          text: '在家学习，准备高中课程',
+          consequences: {
+            knowledge: +8,
+            description: '你利用暑假预习了高中知识，开学后轻松很多'
+          }
+        },
+        {
+          text: '和朋友出去玩，享受假期',
+          consequences: {
+            social: +5,
+            health: +3,
+            description: '你度过了一个轻松愉快的假期'
+          }
+        }
+      ]
+    }
+  ],
+
+  university: [
+    {
+      id: 'uni_001',
+      title: '大学专业选择',
+      description: '高考结束，你面临专业选择：',
+      choices: [
+        {
+          text: '选择土木工程/建筑专业',
+          consequences: {
+            knowledge: +15,
+            description: '你系统学习了建筑相关知识，为进入地产行业打下基础'
+          }
+        },
+        {
+          text: '选择市场营销/工商管理专业',
+          consequences: {
+            social: +15,
+            description: '你学习了销售和管理知识，适合从事地产销售、运营工作'
+          }
+        },
+        {
+          text: '选择金融/经济专业',
+          consequences: {
+            knowledge: +10,
+            social: +5,
+            description: '你学习了金融知识，对房地产投资有独到理解'
+          }
+        }
+      ]
+    },
+    {
+      id: 'uni_002',
+      title: '实习机会',
+      description: '大三暑假，你获得了两个实习机会：',
+      choices: [
+        {
+          text: '去知名房企实习',
+          consequences: {
+            social: +10,
+            knowledge: +10,
+            reputation: +5,
+            description: '你在大公司积累了行业经验，认识了很多业内人士'
+          }
+        },
+        {
+          text: '去小型中介公司实习',
+          consequences: {
+            social: +15,
+            wealth: +5000,
+            description: '你在一线销售岗位锻炼，积累了实战经验和客户资源'
+          }
+        },
+        {
+          text: '准备考研，继续深造',
+          consequences: {
+            knowledge: +20,
+            description: '你决定继续深造，提升自己的学历和专业能力'
+          }
+        }
+      ]
+    }
+  ],
+
+  early_career: [
+    {
+      id: 'ec_001',
+      title: '第一份工作',
+      description: '大学毕业，你需要选择第一份工作：',
+      choices: [
+        {
+          text: '进入大型房企做管培生',
+          consequences: {
+            reputation: +10,
+            knowledge: +10,
+            wealth: +8000,
+            description: '你进入了头部房企，接受系统培训，职业起点很高'
+          }
+        },
+        {
+          text: '进入房产中介公司做销售',
+          consequences: {
+            social: +15,
+            wealth: +5000,
+            description: '你从基层销售做起，收入与业绩直接挂钩'
+          }
+        },
+        {
+          text: '自主创业，开一家小中介门店',
+          consequences: {
+            social: +20,
+            wealth: -20000,
+            reputation: +5,
+            description: '你拿出全部积蓄创业，风险很高但前景广阔'
+          }
+        }
+      ]
+    },
+    {
+      id: 'ec_002',
+      title: '行业红利期',
+      description: '2010年前后，房地产行业迎来快速发展期，你看到了机会：',
+      choices: [
+        {
+          text: '加杠杆贷款投资房产',
+          consequences: {
+            wealth: +100000,
+            reputation: +5,
+            description: '你看准时机投资房产，资产快速增值'
+          }
+        },
+        {
+          text: '跳槽到更好的平台',
+          consequences: {
+            reputation: +10,
+            wealth: +20000,
+            description: '你凭借行业经验跳槽到更好的公司，薪资翻倍'
+          }
+        },
+        {
+          text: '安稳工作，不冒风险',
+          consequences: {
+            knowledge: +5,
+            health: +5,
+            description: '你选择安稳工作，虽然没赚大钱但生活稳定'
+          }
+        }
+      ]
+    }
+  ],
+
+  career_growth: [
+    {
+      id: 'cg_001',
+      title: '职业晋升机会',
+      description: '工作几年后，你有机会晋升为部门负责人：',
+      choices: [
+        {
+          text: '接受晋升，承担更多责任',
+          consequences: {
+            reputation: +15,
+            social: +10,
+            wealth: +50000,
+            health: -10,
+            description: '你成为管理层，收入和地位提升，但工作压力也更大了'
+          }
+        },
+        {
+          text: '积累资源准备创业',
+          consequences: {
+            social: +15,
+            reputation: +5,
+            description: '你积累了足够的资源和人脉，准备开创自己的事业'
+          }
+        },
+        {
+          text: '转做投资，实现财务自由',
+          consequences: {
+            wealth: +200000,
+            knowledge: +10,
+            description: '你利用多年积累的经验投资房产，实现了财务自由'
+          }
+        }
+      ]
+    },
+    {
+      id: 'cg_002',
+      title: '贵人相助',
+      description: '在一次行业峰会上，你认识了一位地产行业的大佬：',
+      choices: [
+        {
+          text: '主动交流，争取合作机会',
+          consequences: {
+            social: +20,
+            reputation: +15,
+            wealth: +100000,
+            description: '你得到了大佬的赏识，获得了宝贵的合作机会'
+          }
+        },
+        {
+          text: '认真听讲，学习经验',
+          consequences: {
+            knowledge: +15,
+            description: '你学到了很多行业前沿知识，受益匪浅'
+          }
+        },
+        {
+          text: '觉得高攀不起，默默离开',
+          consequences: {
+            health: +5,
+            description: '你觉得自己资历尚浅，没有上前打扰'
+          }
+        }
+      ]
+    }
+  ],
+
+  peak_career: [
+    {
+      id: 'pc_001',
+      title: '行业调整期',
+      description: '房地产行业进入调整期，市场环境发生变化：',
+      choices: [
+        {
+          text: '转型做商业地产/城市更新',
+          consequences: {
+            knowledge: +15,
+            wealth: +200000,
+            reputation: +10,
+            description: '你成功转型，抓住了新的行业机会'
+          }
+        },
+        {
+          text: '稳健经营，收缩业务',
+          consequences: {
+            wealth: +50000,
+            health: +10,
+            description: '你选择稳健发展，成功度过行业寒冬'
+          }
+        },
+        {
+          text: '加杠杆扩张，赌一把',
+          consequences: {
+            wealth: -500000,
+            health: -20,
+            description: '你误判了形势，扩张失败，损失惨重'
+          }
+        }
+      ]
+    }
+  ],
+
+  late_career: [
+    {
+      id: 'lc_001',
+      title: '退休前的选择',
+      description: '临近退休，你需要考虑未来的安排：',
+      choices: [
+        {
+          text: '培养接班人，顺利交接',
+          consequences: {
+            reputation: +10,
+            health: +10,
+            description: '你培养了优秀的接班人，公司平稳发展'
+          }
+        },
+        {
+          text: '出售公司，套现享受生活',
+          consequences: {
+            wealth: +5000000,
+            health: +15,
+            description: '你出售了全部资产，实现了完美退休'
+          }
+        },
+        {
+          text: '继续奋斗，直到干不动为止',
+          consequences: {
+            wealth: +1000000,
+            health: -15,
+            description: '你热爱这份事业，选择继续发光发热'
+          }
+        }
+      ]
+    }
+  ]
+}
+
+export const randomEvents = [
+  {
+    id: 'rand_001',
+    title: '楼市暴涨',
+    description: '房地产市场迎来暴涨，你的资产大幅增值！',
+    consequences: {
+      wealth: +(Math.random() * 500000 + 100000),
+      reputation: +5
+    }
+  },
+  {
+    id: 'rand_002',
+    title: '政策调控',
+    description: '国家出台房地产调控政策，市场降温。',
+    consequences: {
+      wealth: -(Math.random() * 200000 + 50000),
+      knowledge: +5
+    }
+  },
+  {
+    id: 'rand_003',
+    title: '项目成功',
+    description: '你负责的项目大获成功，得到了公司奖励！',
+    consequences: {
+      wealth: +(Math.random() * 100000 + 20000),
+      reputation: +10
+    }
+  },
+  {
+    id: 'rand_004',
+    title: '健康问题',
+    description: '长期高强度工作让你的身体出现了问题，需要休养。',
+    consequences: {
+      health: -20,
+      wealth: -10000
+    }
+  }
+]
