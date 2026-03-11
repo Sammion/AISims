@@ -48,7 +48,7 @@
             target="_blank"
             class="wiki-link"
           >
-            查看维基百科
+            查看百科介绍
           </a>
         </div>
       </div>

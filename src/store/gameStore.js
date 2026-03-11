@@ -11,7 +11,8 @@ export const useGameStore = defineStore('game', {
       social: 0,
       wealth: 0,
       health: 100,
-      reputation: 0
+      reputation: 0,
+      appearance: 0
     },
     inventory: [],
     relationships: [],
