@@ -318,6 +318,51 @@ export const events = {
           }
         }
       ]
+    },
+    {
+      id: 'pc_002',
+      title: '行业峰会演讲邀请',
+      description: '你收到了行业顶级峰会的演讲邀请：',
+      choices: [
+        {
+          text: '接受邀请，分享经验',
+          consequences: {
+            reputation: +20,
+            social: +15,
+            description: '你的演讲大获成功，行业地位进一步提升'
+          }
+        },
+        {
+          text: '拒绝邀请，专注公司业务',
+          consequences: {
+            wealth: +150000,
+            knowledge: +10,
+            description: '你专注于公司运营，业务更上一层楼'
+          }
+        }
+      ]
+    },
+    {
+      id: 'pc_003',
+      title: '企业并购机会',
+      description: '有一家小型地产公司经营不善，寻求被并购：',
+      choices: [
+        {
+          text: '抓住机会，低价并购',
+          consequences: {
+            wealth: +300000,
+            reputation: +15,
+            description: '并购非常成功，公司规模扩大了一倍'
+          }
+        },
+        {
+          text: '风险太大，放弃并购',
+          consequences: {
+            health: +5,
+            description: '你规避了潜在风险，公司稳步发展'
+          }
+        }
+      ]
     }
   ],
 
@@ -349,6 +394,50 @@ export const events = {
             wealth: +1000000,
             health: -15,
             description: '你热爱这份事业，选择继续发光发热'
+          }
+        }
+      ]
+    },
+    {
+      id: 'lc_002',
+      title: '行业协会荣誉职位',
+      description: '你被提名担任房地产行业协会会长：',
+      choices: [
+        {
+          text: '接受任命，为行业做贡献',
+          consequences: {
+            reputation: +25,
+            social: +20,
+            description: '你成为行业领军人物，备受尊敬'
+          }
+        },
+        {
+          text: '婉言谢绝，安心退休',
+          consequences: {
+            health: +20,
+            description: '你选择功成身退，安享晚年生活'
+          }
+        }
+      ]
+    },
+    {
+      id: 'lc_003',
+      title: '慈善捐赠邀请',
+      description: '慈善机构邀请你捐赠建立希望小学：',
+      choices: [
+        {
+          text: '慷慨捐赠，回馈社会',
+          consequences: {
+            reputation: +30,
+            wealth: -200000,
+            description: '你的善举得到了社会的广泛赞誉'
+          }
+        },
+        {
+          text: '婉拒捐赠，保留财富给子女',
+          consequences: {
+            wealth: +0,
+            description: '你选择为子女留下更多财富'
           }
         }
       ]
