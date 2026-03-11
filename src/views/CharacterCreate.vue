@@ -5,7 +5,13 @@
       
       <el-form :model="character" label-width="120px" class="form">
         <el-form-item label="姓名">
-          <el-input v-model="character.name" placeholder="请输入姓名" />
+          <el-input 
+            v-model="character.name" 
+            placeholder="请输入姓名" 
+            maxlength="10" 
+            show-word-limit
+            @input="character.name = character.name.replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g, '')"
+          />
         </el-form-item>
 
         <el-form-item label="性别">

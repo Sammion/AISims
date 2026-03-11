@@ -69,8 +69,13 @@
       <div class="consequence-content">
         <p>{{ consequenceText }}</p>
         <div class="stat-changes" v-if="statChanges">
-          <span v-for="(value, key) in statChanges" :key="key" class="change-item">
-            {{ statNames[key] }} {{ value > 0 ? '+' : '' }}{{ value }}
+          <span 
+            v-for="(value, key) in statChanges" 
+            :key="key" 
+            class="change-item"
+            :class="{ positive: value > 0, negative: value < 0 }"
+          >
+            {{ statNames[key] }} {{ value > 0 ? '+' : '' }}{{ key === 'wealth' ? formatWealth(value) : value }}
           </span>
         </div>
       </div>
@@ -413,19 +418,19 @@ const loadGame = (save) => {
 
 .change-item {
   padding: 8px 16px;
-  background: #f0f9ff;
   border-radius: 20px;
   font-size: 14px;
-  color: #409eff;
   font-weight: 500;
+  background: #f0f9ff;
+  color: #409eff;
 }
 
-.change-item:is([class*="+"]) {
+.change-item.positive {
   background: #f0f9ff;
   color: #67c23a;
 }
 
-.change-item:is([class*="-"]) {
+.change-item.negative {
   background: #fef0f0;
   color: #f56c6c;
 }
