@@ -50,6 +50,7 @@
     </div>
 
     <div class="event-card" v-if="currentEvent">
+      <div class="event-image" :style="{ backgroundImage: `url(${getEventImage(currentEvent.id)})` }"></div>
       <div class="event-header">
         <h3>{{ currentEvent.title }}</h3>
       </div>
@@ -214,6 +215,50 @@ const phaseName = computed(() => {
   }
   return phaseMap[currentPhase.value] || ''
 })
+
+// 事件背景图映射
+const eventImageMap = {
+  // 中学时期
+  ms_001: 'https://picsum.photos/seed/ms001/800/300',
+  ms_002: 'https://picsum.photos/seed/ms002/800/300',
+  ms_003: 'https://picsum.photos/seed/ms003/800/300',
+  // 大学时期
+  uni_001: 'https://picsum.photos/seed/uni001/800/300',
+  uni_002: 'https://picsum.photos/seed/uni002/800/300',
+  uni_003: 'https://picsum.photos/seed/uni003/800/300',
+  uni_004: 'https://picsum.photos/seed/uni004/800/300',
+  uni_005: 'https://picsum.photos/seed/uni005/800/300',
+  uni_006: 'https://picsum.photos/seed/uni006/800/300',
+  uni_007: 'https://picsum.photos/seed/uni007/800/300',
+  uni_008: 'https://picsum.photos/seed/uni008/800/300',
+  // 职场初期
+  ec_001: 'https://picsum.photos/seed/ec001/800/300',
+  ec_002: 'https://picsum.photos/seed/ec002/800/300',
+  // 职业上升期
+  cg_001: 'https://picsum.photos/seed/cg001/800/300',
+  cg_002: 'https://picsum.photos/seed/cg002/800/300',
+  // 事业巅峰期
+  pc_001: 'https://picsum.photos/seed/pc001/800/300',
+  pc_002: 'https://picsum.photos/seed/pc002/800/300',
+  pc_003: 'https://picsum.photos/seed/pc003/800/300',
+  pc_004: 'https://picsum.photos/seed/pc004/800/300',
+  pc_005: 'https://picsum.photos/seed/pc005/800/300',
+  // 职业生涯后期
+  lc_001: 'https://picsum.photos/seed/lc001/800/300',
+  lc_002: 'https://picsum.photos/seed/lc002/800/300',
+  lc_003: 'https://picsum.photos/seed/lc003/800/300',
+  lc_004: 'https://picsum.photos/seed/lc004/800/300',
+  lc_005: 'https://picsum.photos/seed/lc005/800/300',
+  // 随机事件
+  rand_001: 'https://picsum.photos/seed/rand001/800/300',
+  rand_002: 'https://picsum.photos/seed/rand002/800/300',
+  rand_003: 'https://picsum.photos/seed/rand003/800/300',
+  rand_004: 'https://picsum.photos/seed/rand004/800/300'
+}
+
+const getEventImage = (eventId) => {
+  return eventImageMap[eventId] || 'https://picsum.photos/seed/default/800/300'
+}
 
 onMounted(() => {
   if (!character.value) {
@@ -548,19 +593,28 @@ const loadGame = (save) => {
 .event-card {
   background: white;
   border-radius: 15px;
-  padding: 30px;
+  padding: 0 0 30px 0;
   margin-bottom: 20px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
 }
 
 .event-header h3 {
-  margin: 0 0 20px 0;
+  margin: 0 30px 20px 30px;
   color: #333;
   font-size: 24px;
 }
 
 .event-content {
-  margin-bottom: 30px;
+  margin: 0 30px 30px 30px;
 }
 
 .event-content p {
@@ -574,6 +628,7 @@ const loadGame = (save) => {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 0 30px;
 }
 
 .choice-btn {
