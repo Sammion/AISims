@@ -471,7 +471,6 @@ const loadGame = (save) => {
     opacity: 1;
   }
 }
-}
 
 .game-header {
   background: white;
