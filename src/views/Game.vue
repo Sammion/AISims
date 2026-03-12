@@ -348,14 +348,24 @@ const saveGame = () => {
   }
 
   const saves = JSON.parse(localStorage.getItem('gameSaves') || '[]')
+  
+  // 限制最多保存10个存档，超过则删除最早的
+  if (saves.length >= 10) {
+    saves.shift()
+    ElMessage.warning('存档数量已达上限，已删除最早的存档')
+  }
+  
   saves.push(save)
-  localStorage.setItem('gameSaves', JSON.stringify(saves))
   
-  showSaveDialog.value = false
-  saveData.value.name = ''
-  loadSaveList()
-  
-  ElMessage.success('游戏已保存')
+  try {
+    localStorage.setItem('gameSaves', JSON.stringify(saves))
+    showSaveDialog.value = false
+    saveData.value.name = ''
+    loadSaveList()
+    ElMessage.success('游戏已保存')
+  } catch (e) {
+    ElMessage.error('保存失败：存储空间不足，请删除部分旧存档后重试')
+  }
 }
 
 const loadSaveList = () => {
