@@ -10,6 +10,9 @@ export const useGameStore = defineStore('game', {
       knowledge: 0,
       social: 0,
       wealth: 0,
+      cash: 0,
+      property: 0,
+      investment: 0,
       health: 100,
       reputation: 0,
       appearance: 0
@@ -24,6 +27,9 @@ export const useGameStore = defineStore('game', {
   actions: {
     initCharacter(characterData) {
       this.character = characterData
+      this.stats.cash = characterData.familySavings
+      this.stats.property = 0
+      this.stats.investment = 0
       this.stats.wealth = characterData.familySavings
       this.stats.appearance = characterData.appearance
       this.currentAge = 15
@@ -52,8 +58,16 @@ export const useGameStore = defineStore('game', {
       })
     },
 
-    addWealth(amount) {
-      this.stats.wealth += amount
+    addWealth(amount, type = 'cash') {
+      if (type === 'cash') {
+        this.stats.cash += amount
+      } else if (type === 'property') {
+        this.stats.property += amount
+      } else if (type === 'investment') {
+        this.stats.investment += amount
+      }
+      // 总财富自动计算
+      this.stats.wealth = this.stats.cash + this.stats.property + this.stats.investment
     },
 
     nextYear() {

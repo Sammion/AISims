@@ -44,8 +44,16 @@
         <span class="stat-value">{{ stats.reputation }}</span>
       </div>
       <div class="stat-item wealth">
-        <span class="stat-label">财富</span>
-        <span class="stat-value">¥{{ formatWealth(stats.wealth) }}</span>
+        <span class="stat-label">现金</span>
+        <span class="stat-value">¥{{ formatWealth(stats.cash) }}</span>
+      </div>
+      <div class="stat-item wealth">
+        <span class="stat-label">房产</span>
+        <span class="stat-value">¥{{ formatWealth(stats.property) }}</span>
+      </div>
+      <div class="stat-item wealth">
+        <span class="stat-label">投资</span>
+        <span class="stat-value">¥{{ formatWealth(stats.investment) }}</span>
       </div>
     </div>
 
