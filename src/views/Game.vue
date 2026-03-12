@@ -5,7 +5,7 @@
         <h2>{{ character.name }} 的人生</h2>
         <div class="age-info">
           <span class="age">{{ currentAge }} 岁</span>
-          <span class="year">({{ 2000 + currentAge - 15 }}年)</span>
+          <span class="year">({{ 1995 + currentAge - 15 }}年)</span>
           <span class="phase">{{ phaseName }}</span>
         </div>
       </div>

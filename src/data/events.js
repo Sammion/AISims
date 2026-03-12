@@ -240,15 +240,15 @@ export const events = {
     },
     {
       id: 'uni_007',
-      title: '2008年楼市爆发',
-      description: '2008年金融危机后，国家出台四万亿刺激计划，楼市开始爆发式增长：',
+      title: '2003年楼市升温',
+      description: '2003年国家发布18号文件，明确房地产为支柱产业，楼市开始持续升温：',
       choices: [
         {
           text: '说服父母借钱买房',
           consequences: {
             wealth: +500000,
             knowledge: +10,
-            description: '你看准了时机，家庭资产在几年内翻了数倍'
+            description: '你看准了政策红利，家庭资产在几年内翻了数倍'
           }
         },
         {
@@ -371,7 +371,7 @@ export const events = {
     {
       id: 'ec_001',
       title: '第一份工作',
-      description: '大学毕业，你需要选择第一份工作：',
+      description: '2000年大学毕业，你需要选择第一份工作：',
       choices: [
         {
           text: '进入大型房企做管培生',
@@ -408,8 +408,8 @@ export const events = {
     },
     {
       id: 'ec_002',
-      title: '行业红利期',
-      description: '2010年前后，房地产行业迎来快速发展期，你看到了机会：',
+      title: '2008年四万亿刺激计划',
+      description: '2008年金融危机后，国家出台四万亿刺激计划，楼市迎来爆发式增长：',
       choices: [
         {
           text: '加杠杆贷款投资房产',
