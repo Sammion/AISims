@@ -384,10 +384,15 @@ export const events = {
         },
         {
           text: '进入房产中介公司做销售',
-          consequences: {
-            social: +15,
-            wealth: +5000,
-            description: '你从基层销售做起，收入与业绩直接挂钩'
+          consequences: (stats) => {
+            // 销售收入取决于社交能力，有20%概率获得高额提成
+            const baseWealth = 5000
+            const bonus = stats.social > 70 && Math.random() < 0.2 ? 50000 : 0
+            return {
+              social: +15,
+              wealth: baseWealth + bonus,
+              description: bonus > 0 ? '你销售能力突出，第一个月就拿到了高额提成，收入远超预期' : '你努力工作，积累了销售经验和客户资源'
+            }
           }
         },
         {
@@ -408,10 +413,15 @@ export const events = {
       choices: [
         {
           text: '加杠杆贷款投资房产',
-          consequences: {
-            wealth: +100000,
-            reputation: +5,
-            description: '你看准时机投资房产，资产快速增值'
+          consequences: (stats) => {
+            // 投资收益取决于知识和眼光，有15%概率获得超高回报
+            const baseReturn = 100000
+            const highReturn = stats.knowledge > 65 && Math.random() < 0.15 ? 1000000 : 0
+            return {
+              wealth: baseReturn + highReturn,
+              reputation: +5,
+              description: highReturn > 0 ? '你眼光独到，投资的房产价格暴涨，获得了超过十倍的收益！' : '你看准时机投资房产，资产快速增值'
+            }
           }
         },
         {
