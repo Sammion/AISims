@@ -533,6 +533,53 @@ export const events = {
           }
         }
       ]
+    },
+    {
+      id: 'pc_004',
+      title: '上市计划',
+      description: '投资机构建议你推动公司上市：',
+      choices: [
+        {
+          text: '全力推动上市',
+          consequences: {
+            wealth: +1000000,
+            reputation: +30,
+            health: -20,
+            description: '公司成功上市，你身家暴涨，但也付出了健康的代价'
+          }
+        },
+        {
+          text: '保持私有，稳健发展',
+          consequences: {
+            wealth: +200000,
+            health: +10,
+            description: '你选择不上市，公司发展更加稳健自由'
+          }
+        }
+      ]
+    },
+    {
+      id: 'pc_005',
+      title: '跨界发展机会',
+      description: '有人邀请你跨界投资新能源行业：',
+      choices: [
+        {
+          text: '大胆尝试，小额投资',
+          consequences: {
+            wealth: +500000,
+            knowledge: +10,
+            description: '新能源投资大获成功，你获得了丰厚回报'
+          }
+        },
+        {
+          text: '专注地产，不跨界',
+          consequences: {
+            wealth: +100000,
+            reputation: +5,
+            description: '你专注主业，房地产业务更加稳固'
+          }
+        }
+      ]
     }
   ],
 
@@ -608,6 +655,51 @@ export const events = {
           consequences: {
             wealth: +0,
             description: '你选择为子女留下更多财富'
+          }
+        }
+      ]
+    },
+    {
+      id: 'lc_004',
+      title: '家族企业传承',
+      description: '子女希望接手你的企业：',
+      choices: [
+        {
+          text: '交给子女，放心传承',
+          consequences: {
+            reputation: +10,
+            health: +15,
+            description: '企业顺利传承给下一代，你可以安心退休'
+          }
+        },
+        {
+          text: '交给职业经理人',
+          consequences: {
+            wealth: +500000,
+            reputation: +5,
+            description: '你聘请专业团队管理公司，企业发展更专业'
+          }
+        }
+      ]
+    },
+    {
+      id: 'lc_005',
+      title: '自传出版邀请',
+      description: '出版社邀请你出版个人自传，分享创业经历：',
+      choices: [
+        {
+          text: '接受邀请，分享经验',
+          consequences: {
+            reputation: +20,
+            wealth: +100000,
+            description: '自传出版后大受欢迎，成为行业经典读物'
+          }
+        },
+        {
+          text: '婉拒邀请，保持低调',
+          consequences: {
+            health: +10,
+            description: '你选择低调生活，安享退休时光'
           }
         }
       ]
