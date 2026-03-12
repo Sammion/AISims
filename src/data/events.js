@@ -223,11 +223,25 @@ export const events = {
       choices: [
         {
           text: '去知名房企实习',
-          consequences: {
-            social: +10,
-            knowledge: +10,
-            reputation: +5,
-            description: '你在大公司积累了行业经验，认识了很多业内人士'
+          consequences: ({ fatherTrait, motherTrait }) => {
+            const baseKnowledge = 10
+            const baseSocial = 10
+            const baseReputation = 5
+            
+            // 父母性格加成
+            let bonus = 0
+            if (fatherTrait === 'business' || motherTrait === 'career') {
+              bonus = 5
+            } else if (fatherTrait === 'intellectual' || motherTrait === 'careful') {
+              bonus = 3
+            }
+            
+            return {
+              knowledge: baseKnowledge + bonus,
+              social: baseSocial + bonus,
+              reputation: baseReputation + bonus,
+              description: `你在知名房企实习表现出色，家庭背景帮你获得了${bonus}点额外加成`
+            }
           }
         },
         {
