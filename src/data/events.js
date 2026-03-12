@@ -102,12 +102,14 @@ export const events = {
       choices: [
         {
           text: '积极参与，认识新朋友',
-          consequences: (appearance) => {
+          consequences: ({ appearance, gender }) => {
             const baseSocial = 10
-            const bonus = appearance >= 7 ? 8 : appearance >= 5 ? 5 : 2
+            const appearanceBonus = appearance >= 7 ? 8 : appearance >= 5 ? 5 : 2
+            const genderBonus = gender === 'female' ? 3 : gender === 'male' ? 2 : 0
+            const totalBonus = appearanceBonus + genderBonus
             return {
-              social: baseSocial + bonus,
-              description: `你在联谊会上认识了很多朋友，颜值帮你获得了${bonus}点额外社交加成`
+              social: baseSocial + totalBonus,
+              description: `你在联谊会上认识了很多朋友，颜值和性别帮你获得了${totalBonus}点额外社交加成`
             }
           }
         },
