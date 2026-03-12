@@ -62,6 +62,28 @@ export const events = {
           }
         }
       ]
+    },
+    {
+      id: 'ms_003',
+      title: '房改政策宣传',
+      description: '90年代末，国家开始推行住房商品化改革，单位分房即将成为历史：',
+      choices: [
+        {
+          text: '关注政策，和父母讨论买房',
+          consequences: {
+            knowledge: +5,
+            wealth: +10000,
+            description: '你说服父母赶在房改前购买了单位福利房，家庭资产大幅增值'
+          }
+        },
+        {
+          text: '觉得和自己无关，不关心',
+          consequences: {
+            social: +3,
+            description: '你对政策不感兴趣，错过了早期买房的机会'
+          }
+        }
+      ]
     }
   ],
 
@@ -212,6 +234,28 @@ export const events = {
             health: +8,
             social: +6,
             description: '你经常参加体育锻炼，身体变得更加强壮，还认识了很多朋友'
+          }
+        }
+      ]
+    },
+    {
+      id: 'uni_007',
+      title: '2008年楼市爆发',
+      description: '2008年金融危机后，国家出台四万亿刺激计划，楼市开始爆发式增长：',
+      choices: [
+        {
+          text: '说服父母借钱买房',
+          consequences: {
+            wealth: +500000,
+            knowledge: +10,
+            description: '你看准了时机，家庭资产在几年内翻了数倍'
+          }
+        },
+        {
+          text: '觉得房价太高，等等再说',
+          consequences: {
+            knowledge: +5,
+            description: '你错过了最佳购房时机，后来房价越来越高'
           }
         }
       ]
