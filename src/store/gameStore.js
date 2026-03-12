@@ -108,21 +108,21 @@ export const useGameStore = defineStore('game', {
         endingType = 'tycoon'
         referencePerson = {
           name: '王健林',
-          wiki: 'https://zh.wikipedia.org/wiki/%E7%8E%8B%E5%81%A5%E6%9E%97',
+          wiki: 'https://baike.baidu.com/item/%E7%8E%8B%E5%81%A5%E6%9E%97',
           description: '万达集团创始人，中国房地产行业领军人物'
         }
       } else if (wealth > 100000000 && reputation > 70) {
         endingType = 'successful_developer'
         referencePerson = {
           name: '潘石屹',
-          wiki: 'https://zh.wikipedia.org/wiki/%E6%BD%98%E7%9F%B3%E5%B2%B7',
+          wiki: 'https://baike.baidu.com/item/%E6%BD%98%E7%9F%B3%E5%B2%B7',
           description: 'SOHO中国创始人，知名地产开发商'
         }
       } else if (wealth > 10000000 && knowledge > 70) {
         endingType = 'excellent_agent'
         referencePerson = {
           name: '左晖',
-          wiki: 'https://zh.wikipedia.org/wiki/%E5%B7%A6%E6%99%96',
+          wiki: 'https://baike.baidu.com/item/%E5%B7%A6%E6%99%96',
           description: '链家、贝壳找房创始人，房产中介行业变革者'
         }
       } else if (wealth > 5000000 && social > 70) {
