@@ -55,6 +55,10 @@
         <span class="stat-label">投资</span>
         <span class="stat-value">¥{{ formatWealth(stats.investment) }}</span>
       </div>
+      <div class="stat-item action-buttons">
+        <el-button type="primary" size="small" @click="investInProperty">加大投资</el-button>
+        <el-button type="warning" size="small" @click="sellProperty">降价抛售</el-button>
+      </div>
     </div>
 
     <div class="event-card" v-if="currentEvent">
@@ -440,6 +444,30 @@ const loadGame = (save) => {
   
   ElMessage.success('游戏已加载')
 }
+
+// 房产投资操作
+const investInProperty = () => {
+  const investAmount = Math.min(stats.value.cash, 100000) // 每次最多投资10万
+  if (investAmount < 10000) {
+    ElMessage.warning('现金不足1万，无法进行投资')
+    return
+  }
+  gameStore.addWealth(-investAmount, 'cash')
+  gameStore.addWealth(investAmount * 1.0, 'property') // 1:1兑换房产（后续可根据市场行情调整）
+  ElMessage.success(`成功投资¥${formatWealth(investAmount)}购买房产`)
+}
+
+// 房产抛售操作
+const sellProperty = () => {
+  const sellAmount = Math.min(stats.value.property, 100000) // 每次最多抛售10万
+  if (sellAmount < 10000) {
+    ElMessage.warning('持有房产不足1万，无法进行抛售')
+    return
+  }
+  gameStore.addWealth(-sellAmount, 'property')
+  gameStore.addWealth(sellAmount * 0.9, 'cash') // 降价10%抛售
+  ElMessage.success(`成功抛售¥${formatWealth(sellAmount)}房产，获得现金¥${formatWealth(sellAmount * 0.9)}`)
+}
 </script>
 
 <style scoped>
@@ -596,6 +624,13 @@ const loadGame = (save) => {
 .wealth .stat-value {
   color: #67c23a;
   font-size: 18px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
 }
 
 .event-card {
